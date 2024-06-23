@@ -1,0 +1,51 @@
+.status_button {
+    @apply px-1 bg-gray-200;
+
+    &.todo {
+        @apply bg-state-todo-bg;
+    }
+    &.in-progress {
+        @apply bg-state-progress-bg;
+    }
+    &.done {
+        @apply bg-state-done-bg;
+    }
+}
+
+.task_list {
+    & > p {
+        @apply px-2;
+        width: 150px;
+    }
+
+    & > div {
+        @apply p-2;
+    }
+
+    &.todo {
+        & > p {
+            @apply bg-state-todo-bg;
+        }
+        & > div {
+            @apply border border-state-todo-bg;
+        }
+    }
+
+    &.in-progress {
+        & > p {
+            @apply bg-state-progress-bg;
+        }
+        & > div {
+            @apply border border-state-progress-bg;
+        }
+    }
+
+    &.done {
+        & > p {
+            @apply bg-state-done-bg;
+        }
+        & > div {
+            @apply border border-state-done-bg;
+        }
+    }
+}

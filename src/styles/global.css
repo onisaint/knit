@@ -1,0 +1,58 @@
+@tailwind utilities;
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    .active-color {
+        color: var(--active-foreground) !important;
+        transition: color 0.17s ease;
+    }
+
+    .active-child-color > .child {
+        color: var(--active-foreground) !important;
+        transition: color 0.17s ease;
+    }
+
+    .active-background {
+        background-color: var(--active-background) !important;
+        transition: color 0.17s ease;
+    }
+
+    .input {
+        @apply bg-transparent border-b w-full outline-none;
+    }
+
+    .input:hover,
+    .input:focus {
+        @apply border-gray-800;
+    }
+
+    .button {
+        @apply p-1 px-2 pr-4 cursor-pointer outline-none transition-all;
+        transition: background-color 0.17s ease;
+    }
+    .button:focus-visible {
+        outline: var(--color-gray-400) solid 2px;
+    }
+    .button:disabled {
+        @apply opacity-50 cursor-not-allowed;
+    }
+
+    .button-close {
+        box-shadow: inset 4px 0px 0 0px var(--color-state-close);
+        transition: box-shadow 0.17s ease;
+    }
+
+    .button-close:hover {
+        box-shadow: inset 120px 0px 0 0px var(--color-state-close);
+    }
+
+    .button-transparent {
+        @apply p-1 pl-0 cursor-pointer outline-none;
+    }
+    .button-transparent:focus-visible {
+        outline: var(--color-gray-400) solid 2px;
+    }
+}

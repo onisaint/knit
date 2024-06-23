@@ -1,0 +1,59 @@
+.app_container {
+    @apply p-8 m-auto;
+    max-width: 60%;
+    width: 60%;
+}
+
+@media screen and (max-width: 768px) {
+    .app_container {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.loader_bar {
+    @apply bg-gray-200 rounded-sm;
+    width: 200px;
+    height: 2px;
+}
+
+.loader_bar > div {
+    @apply bg-gray-500 rounded-sm;
+    height: 2px;
+    animation: loader-bar 4s ease-out forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes loader-bar {
+    0% {
+        width: 10%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.spin {
+    @apply text-gray-400;
+    animation: spin-tick 2s ease-in-out infinite forwards;
+    width: fit-content;
+    height: fit-content;
+}
+
+@keyframes spin-tick {
+    0% {
+        rotate: 0deg;
+    }
+    25% {
+        rotate: 90deg;
+    }
+    50% {
+        rotate: 180deg;
+    }
+    75% {
+        rotate: 270deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
+}
