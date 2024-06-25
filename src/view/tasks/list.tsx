@@ -114,7 +114,7 @@ export const TaskList: FC = () => {
                   { empty: isHidden },
                 )}
               >
-                {[type as TASK_STATUS] !== TASK_STATUS.TODO &&
+                {(type as TASK_STATUS) !== TASK_STATUS.TODO &&
                   taskTypes[type as TASK_STATUS].length === 0 && (
                     <p className="p-1 text-sm text-gray-400">
                       {

@@ -5,7 +5,7 @@ export const useDebounce = (
   ms: number = 0,
   dps: DependencyList = [],
 ) => {
-  const timer = useRef(0);
+  const timer = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     clearTimeout(timer.current);
