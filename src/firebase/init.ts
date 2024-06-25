@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 
-const initFirebase = () =>
+const initFirebase = () => {
   initializeApp({
     apiKey: import.meta.env.VITE_FIREBASE_KEY,
     authDomain: import.meta.env.VITE_FIREBASE_DOMAIN,
@@ -9,5 +9,6 @@ const initFirebase = () =>
     messagingSenderId: import.meta.env.VITE_FIREBASE_MSG_ID,
     appId: import.meta.env.VITE_FIREBASE_APP_ID,
   });
+};
 
 export { initFirebase };

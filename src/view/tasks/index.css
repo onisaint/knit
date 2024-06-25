@@ -13,38 +13,38 @@
 }
 
 .task_list {
-    & > p {
+    & > .header > p {
         @apply px-2;
         width: 150px;
     }
 
-    & > div {
-        @apply p-2;
+    & > .body:not(.empty) {
+        @apply p-1;
     }
 
     &.todo {
-        & > p {
+        & > .header > p {
             @apply bg-state-todo-bg;
         }
-        & > div {
+        & > .body {
             @apply border border-state-todo-bg;
         }
     }
 
     &.in-progress {
-        & > p {
+        & > .header > p {
             @apply bg-state-progress-bg;
         }
-        & > div {
+        & > .body {
             @apply border border-state-progress-bg;
         }
     }
 
     &.done {
-        & > p {
+        & > .header > p {
             @apply bg-state-done-bg;
         }
-        & > div {
+        & > .body {
             @apply border border-state-done-bg;
         }
     }

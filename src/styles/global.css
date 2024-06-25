@@ -44,9 +44,40 @@
         box-shadow: inset 4px 0px 0 0px var(--color-state-close);
         transition: box-shadow 0.17s ease;
     }
-
     .button-close:hover {
-        box-shadow: inset 120px 0px 0 0px var(--color-state-close);
+        box-shadow: inset 200px 0px 0 0px var(--color-state-close);
+    }
+
+    .button-delete {
+        box-shadow: inset 4px 0px 0 0px var(--color-state-danger);
+        transition: box-shadow 0.17s ease;
+    }
+    .button-delete:hover {
+        box-shadow: inset 200px 0px 0 0px var(--color-state-danger);
+    }
+
+    .button-to-progress {
+        box-shadow: inset 4px 0px 0 0px var(--color-state-progress-bg);
+        transition: box-shadow 0.17s ease;
+    }
+    .button-to-progress:hover {
+        box-shadow: inset 200px 0px 0 0px var(--color-state-progress-bg);
+    }
+
+    .button-to-todo {
+        box-shadow: inset 4px 0px 0 0px var(--color-state-todo-bg);
+        transition: box-shadow 0.17s ease;
+    }
+    .button-to-todo:hover {
+        box-shadow: inset 200px 0px 0 0px var(--color-state-todo-bg);
+    }
+
+    .button-to-done {
+        box-shadow: inset 4px 0px 0 0px var(--color-state-done-bg);
+        transition: box-shadow 0.17s ease;
+    }
+    .button-to-done:hover {
+        box-shadow: inset 200px 0px 0 0px var(--color-state-done-bg);
     }
 
     .button-transparent {

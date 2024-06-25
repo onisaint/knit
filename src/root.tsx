@@ -4,18 +4,23 @@ import { getUser } from "./firebase/auth";
 import { AppLoaderView } from "./components/AppLoader";
 import { TaskView } from "./view/tasks/taskView";
 import { useAuthStore } from "./store/authStore";
+import { db_getTasks } from "./firebase/getTasks";
+import { useTaskStore } from "./store/taskStore";
 
 const App: FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const { setUser, destroy } = useAuthStore();
+  const { setTasks } = useTaskStore();
 
   useEffect(() => {
-    getUser((user) => {
+    getUser(async (user) => {
       setIsAuthenticated(!!user);
       if (user && user.displayName && user.email) {
         setUser({ id: user.uid, name: user.displayName, email: user.email });
+        const tasks = await db_getTasks();
+        setTasks(tasks);
       } else {
         destroy();
       }
@@ -23,7 +28,7 @@ const App: FC = () => {
         setIsLoading(false);
       }, 200);
     });
-  }, [destroy, setUser]);
+  }, [destroy, setUser, setTasks]);
 
   if (isLoading) {
     return <AppLoaderView />;
