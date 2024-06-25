@@ -2,6 +2,8 @@
 
 Dead simple and easy to use task management system
 
+useit and test it at https://knit-chi.vercel.app/
+
 # how to run the app locally
 
 1. create a new firebase app and get the credentials from the settings
