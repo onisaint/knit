@@ -52,7 +52,7 @@ export const SignupView: FC<{ toggleLogin: () => void }> = ({
   };
 
   return (
-    <div>
+    <div data-testid="signup-view">
       <h4 className="text-lg text-gray-800 font-sans">Hello!</h4>
 
       <form className="mt-6" onSubmit={handleSubmit(onSignup)}>
@@ -68,9 +68,12 @@ export const SignupView: FC<{ toggleLogin: () => void }> = ({
             autoFocus
             placeholder="Display name"
             required
+            data-testid="signup-name"
             {...register("name")}
           />
-          {errors?.name && <small>❌ {errors.name}</small>}
+          {errors?.name && (
+            <small data-testid="error-name">❌ {errors.name}</small>
+          )}
         </div>
         <div className="mt-4">
           <label htmlFor="signup-email" className="block text-sm text-gray-600">
@@ -83,9 +86,12 @@ export const SignupView: FC<{ toggleLogin: () => void }> = ({
             autoComplete="off"
             placeholder="e-mail address"
             required
+            data-testid="signup-email"
             {...register("email")}
           />
-          {errors?.email && <small>❌ {errors.email}</small>}
+          {errors?.email && (
+            <small data-testid="error-email">❌ {errors.email}</small>
+          )}
         </div>
         <div className="mt-4">
           <label
@@ -100,9 +106,12 @@ export const SignupView: FC<{ toggleLogin: () => void }> = ({
             type="password"
             placeholder="secure password"
             required
+            data-testid="signup-password"
             {...register("password")}
           />
-          {errors?.password && <small>❌ {errors.password}</small>}
+          {errors?.password && (
+            <small data-testid="error-password">❌ {errors.password}</small>
+          )}
         </div>
 
         <div className="flex items-center">
@@ -110,6 +119,7 @@ export const SignupView: FC<{ toggleLogin: () => void }> = ({
             type="submit"
             className="button border border-gray-600 mt-8"
             disabled={isBusy}
+            data-testid="submit-signup"
           >
             Create new account
           </button>

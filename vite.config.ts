@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -9,4 +10,10 @@ export default defineConfig({
     port: _PORT,
   },
   plugins: [react()],
+  test: {
+    globals: true,
+    setupFiles: ["src/__tests/setup.tsx"],
+    include: ["src/**/*.test.tsx"],
+    environment: "happy-dom",
+  },
 });

@@ -8,7 +8,10 @@ import { _cx } from "../utils/defaults";
 export const AppLoaderView: FC = () => {
   return (
     <AppContainer>
-      <div className="flex flex-col justify-center items-center mt-10">
+      <div
+        className="flex flex-col justify-center items-center mt-10"
+        data-testid="app-loader"
+      >
         <Logo size="big" />
         <div
           className={_cx([

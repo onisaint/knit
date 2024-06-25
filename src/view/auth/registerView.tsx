@@ -11,7 +11,10 @@ export const RegisterView: FC = () => {
 
   return (
     <AppContainer>
-      <div className="p-8 mt-16 border-2 flex items-start">
+      <div
+        className="p-8 mt-16 border-2 flex items-start"
+        data-testid="register-view"
+      >
         <div className="w-1/2 pr-10">
           <Logo size="big" />
           <p className="text-2xl font-sans text-gray-600">

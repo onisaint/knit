@@ -7,6 +7,7 @@ import Root from "./root.tsx";
 
 import "./styles/main.css";
 import "./styles/global.css";
+import { ErrorBoundary } from "react-error-boundary";
 
 initFirebase();
 
@@ -14,8 +15,12 @@ const root = createRoot(document.getElementById("__root") as HTMLElement);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Root />
-    </BrowserRouter>
+    <ErrorBoundary
+      fallback={<p>Ops! something went wrong. Refresh and try again</p>}
+    >
+      <BrowserRouter>
+        <Root />
+      </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>,
 );

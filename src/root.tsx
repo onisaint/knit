@@ -21,12 +21,11 @@ const App: FC = () => {
         setUser({ id: user.uid, name: user.displayName, email: user.email });
         const tasks = await db_getTasks();
         setTasks(tasks);
+        setIsLoading(false);
       } else {
         destroy();
-      }
-      setTimeout(() => {
         setIsLoading(false);
-      }, 200);
+      }
     });
   }, [destroy, setUser, setTasks]);
 

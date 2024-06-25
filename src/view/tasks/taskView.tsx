@@ -13,7 +13,10 @@ export const TaskView: FC = () => {
 
   return (
     <AppContainer>
-      <div className={_cx(confirm && "opacity-50 transition-all")}>
+      <div
+        className={_cx(confirm && "opacity-50 transition-all")}
+        data-testid="task-view"
+      >
         <TaskHeader />
 
         <div className="mt-8">

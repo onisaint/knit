@@ -46,7 +46,7 @@ export const LoginView: FC<{ toggleSignUp: () => void }> = ({
   };
 
   return (
-    <div>
+    <div data-testid="login-view">
       <h4 className="text-lg text-gray-800 font-sans">Welcome back</h4>
 
       <form className="mt-6" onSubmit={handleSubmit(onLogin)}>
@@ -61,9 +61,12 @@ export const LoginView: FC<{ toggleSignUp: () => void }> = ({
             autoComplete="off"
             placeholder="e-mail address"
             required
+            data-testid="login-email"
             {...register("email")}
           />
-          {errors?.email && <small>❌ {errors.email}</small>}
+          {errors?.email && (
+            <small data-testid="email-error">❌ {errors.email}</small>
+          )}
         </div>
         <div className="mt-4">
           <label
@@ -78,9 +81,12 @@ export const LoginView: FC<{ toggleSignUp: () => void }> = ({
             type="password"
             placeholder="secure password"
             required
+            data-testid="login-password"
             {...register("password")}
           />
-          {errors?.password && <small>❌ {errors.password}</small>}
+          {errors?.password && (
+            <small data-testid="password-error">❌ {errors.password}</small>
+          )}
         </div>
 
         <div className="flex items-center">
@@ -88,6 +94,7 @@ export const LoginView: FC<{ toggleSignUp: () => void }> = ({
             type="submit"
             className="button border border-gray-600 mt-8"
             disabled={isBusy}
+            data-testid="submit-login"
           >
             Login
           </button>
