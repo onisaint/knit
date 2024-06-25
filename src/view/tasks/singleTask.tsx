@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { ITask } from "../../models/task";
 import { _cx } from "../../utils/defaults";
 import { TASK_STATUS } from "../../consts/status";

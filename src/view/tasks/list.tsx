@@ -7,6 +7,7 @@ import { useTaskStore } from "../../store/taskStore";
 import { ITask } from "../../models/task";
 import { SingleTask } from "./singleTask";
 import { AddNewTask } from "./addNewTask";
+import { useAppStore } from "../../store/appStore";
 
 const EMPTY_MESSAGE: Record<TASK_STATUS, string> = {
   todo: "No tasks are to be done.",
@@ -14,8 +15,15 @@ const EMPTY_MESSAGE: Record<TASK_STATUS, string> = {
   done: "No tasks are done yet!",
 };
 
+const EMPTY_SEARCH_MESSAGE: Record<TASK_STATUS, string> = {
+  todo: "Nothing found here",
+  "in-progress": "Nothing found here",
+  done: "Nothing found here",
+};
+
 export const TaskList: FC = () => {
   const { tasks } = useTaskStore();
+  const { search } = useAppStore();
 
   const [hiddenTabs, setHiddenTabs] = useState<TASK_STATUS[]>([]);
 
@@ -34,7 +42,17 @@ export const TaskList: FC = () => {
     });
 
   const taskTypes: Record<TASK_STATUS, ITask[]> = useMemo(() => {
-    const taskRecord = tasks.reduce(
+    let _tasks = tasks;
+    if (search !== "") {
+      const _search = search.toLowerCase();
+      _tasks = tasks.filter(
+        (task) =>
+          task.description?.toLowerCase().includes(_search) ||
+          task.task.toLowerCase().includes(_search),
+      );
+    }
+
+    const taskRecord = _tasks.reduce(
       (taskList, task) => {
         if (taskList[task.status]) {
           taskList[task.status].push(task);
@@ -47,16 +65,16 @@ export const TaskList: FC = () => {
       { todo: [], "in-progress": [], done: [] } as Record<TASK_STATUS, ITask[]>,
     );
 
-    if (taskRecord["in-progress"].length === 0) {
+    if (search === "" && taskRecord["in-progress"].length === 0) {
       onHideTab(TASK_STATUS.INPROGRESS);
     }
 
-    if (taskRecord["done"].length === 0) {
+    if (search === "" && taskRecord["done"].length === 0) {
       onHideTab(TASK_STATUS.DONE);
     }
 
     return taskRecord;
-  }, [tasks]);
+  }, [tasks, search]);
 
   return (
     <div>
@@ -99,7 +117,11 @@ export const TaskList: FC = () => {
                 {[type as TASK_STATUS] !== TASK_STATUS.TODO &&
                   taskTypes[type as TASK_STATUS].length === 0 && (
                     <p className="p-1 text-sm text-gray-400">
-                      {EMPTY_MESSAGE[type as TASK_STATUS]}
+                      {
+                        (search === "" ? EMPTY_MESSAGE : EMPTY_SEARCH_MESSAGE)[
+                          type as TASK_STATUS
+                        ]
+                      }
                     </p>
                   )}
                 {taskTypes[type as TASK_STATUS].map((task) => (
