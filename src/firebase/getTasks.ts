@@ -22,7 +22,6 @@ export const db_getTasks = async () => {
       collection(db, "tasks"),
       where("uid", "==", auth.currentUser.uid),
     );
-
     const tasksSnapshot = await getDocs(q);
     const tasks: ITask[] = tasksSnapshot.docs.map((d) => ({
       id: d.id,

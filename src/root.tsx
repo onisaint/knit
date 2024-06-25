@@ -11,8 +11,8 @@ const App: FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const { setUser, destroy } = useAuthStore();
-  const { setTasks } = useTaskStore();
+  const { setUser, destroy: destroyAuth } = useAuthStore();
+  const { setTasks, destroy: destroyTasks } = useTaskStore();
 
   useEffect(() => {
     getUser(async (user) => {
@@ -23,11 +23,12 @@ const App: FC = () => {
         setTasks(tasks);
         setIsLoading(false);
       } else {
-        destroy();
+        destroyAuth();
+        destroyTasks();
         setIsLoading(false);
       }
     });
-  }, [destroy, setUser, setTasks]);
+  }, [destroyAuth, destroyTasks, setUser, setTasks]);
 
   if (isLoading) {
     return <AppLoaderView />;

@@ -10,6 +10,7 @@ interface IAction {
   addTask: (task: ITask) => void;
   updateTask: (taskId: string, updatedTask: Partial<ITask>) => void;
   deleteTask: (taskId: string) => void;
+  destroy: () => void;
 }
 
 const defaultTaskState: IState = {
@@ -33,4 +34,5 @@ export const useTaskStore = create<IState & IAction>((set) => ({
     })),
   deleteTask: (taskId) =>
     set(({ tasks }) => ({ tasks: tasks.filter((task) => task.id !== taskId) })),
+  destroy: () => set({ tasks: [] }),
 }));

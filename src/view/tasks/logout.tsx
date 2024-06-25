@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { useAuthStore } from "../../store/authStore";
 import { signOutUser } from "../../firebase/auth";
+import { useTaskStore } from "../../store/taskStore";
 
 export const Logout: FC = () => {
-  const { signout, confirmSignOut, destroy } = useAuthStore();
+  const { signout, confirmSignOut, destroy: destroyAuthStore } = useAuthStore();
+  const { destroy: destroyTaskStore } = useTaskStore();
 
   const onSignOut = async () => {
     if (!signout.confirm) {
@@ -13,7 +15,8 @@ export const Logout: FC = () => {
 
     try {
       await signOutUser();
-      destroy();
+      destroyTaskStore();
+      destroyAuthStore();
     } catch {
       // ignore this error and destroy user anyway
     }
