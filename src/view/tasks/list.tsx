@@ -11,7 +11,7 @@ import { useAppStore } from "../../store/appStore";
 
 const EMPTY_MESSAGE: Record<TASK_STATUS, string> = {
   todo: "No tasks are to be done.",
-  "in-progress": "No tasks are in progress. Move from todo list",
+  "in-progress": "No tasks are in progress. Move a task from todo list",
   done: "No tasks are done yet!",
 };
 
