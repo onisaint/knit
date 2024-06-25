@@ -87,10 +87,10 @@ export const AddNewTask = () => {
           <div className="flex items-center">
             <button
               type="submit"
-              className="text-sm button mt-4 !py-1 bg-gray-200 flex items-center"
+              className="text-sm button-to-todo mt-4 px-2 flex items-center"
               disabled={isBusy}
             >
-              Add new task
+              Add to todo
             </button>
             {!isBusy && (
               <button
